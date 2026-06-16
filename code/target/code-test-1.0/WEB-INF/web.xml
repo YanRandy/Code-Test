@@ -8,6 +8,13 @@
     <servlet>
         <servlet-name>FrontController</servlet-name>
         <servlet-class>com.example.servlet.FrontControllerServlet</servlet-class>
+
+        <init-param>
+            <param-name>packageToScan</param-name>
+            <param-value>com.example.controller</param-value>
+        </init-param>
+
+        <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
