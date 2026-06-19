@@ -1,6 +1,6 @@
-com/example/controller/FormController.class
-com/example/controller/RandomController.class
+com/example/controller/B.class
 com/example/controller/TestController.class
 com/example/Main.class
 com/example/entity/Test.class
-com/example/controller/JustInTimeController.class
+com/example/controller/A.class
+com/example/controller/C.class
