@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Résultat du contrôleur - HTML</title>
+</head>
+
+<body>
+    <h1>Résultat du contrôleur (Via HTML statique + JS)</h1>
+    <ul id="zone-messages"></ul>
+    <script>
+        fetch('/mon-application/api/messages')
+            .then(response => response.json())
+            .then(messages => {
+                const liste = document.getElementById('zone-messages');
+                messages.forEach(msg => {
+                    const li = document.createElement('li');
+                    li.textContent = msg;
+                    liste.appendChild(li);
+                });
+            })
+            .catch(error => console.error("Erreur lors de la récupération :", error));
+    </script>
+</body>
+
+</html>
