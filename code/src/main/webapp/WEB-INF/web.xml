@@ -17,7 +17,7 @@
 
     <context-param>
         <param-name>suffix</param-name>
-        <param-value>.html</param-value>
+        <param-value>.jsp</param-value>
     </context-param>
 
     <listener>

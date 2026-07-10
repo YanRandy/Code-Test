@@ -11,8 +11,9 @@ public class TestController {
     public ModelAndView afficherFormulaire() {
         ModelAndView mv = new ModelAndView();
         mv.setView("test");
-        // String[] listMessage = {"Bonjour", "Salut", "Hello", "Hi"};
-        mv.setAttribute("message", "Bonjour, je suis Randy, le createur de Randy Framework");
+        String[] listMessage = {"Bonjour", "Salut", "Hello", "Hi"};
+        // mv.setAttribute("message", "Bonjour");
+        mv.setAttribute("message", listMessage);
         return mv;
     }
 
