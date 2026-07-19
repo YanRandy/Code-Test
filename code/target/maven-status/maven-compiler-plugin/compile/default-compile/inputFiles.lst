@@ -3,4 +3,7 @@
 /home/randylam/Documents/GitHub/Code-Test/code/src/main/java/com/example/controller/B.java
 /home/randylam/Documents/GitHub/Code-Test/code/src/main/java/com/example/controller/C.java
 /home/randylam/Documents/GitHub/Code-Test/code/src/main/java/com/example/controller/TestController.java
+/home/randylam/Documents/GitHub/Code-Test/code/src/main/java/com/example/entity/Livre.java
 /home/randylam/Documents/GitHub/Code-Test/code/src/main/java/com/example/entity/Test.java
+/home/randylam/Documents/GitHub/Code-Test/code/src/main/java/com/example/repository/LivreRepository.java
+/home/randylam/Documents/GitHub/Code-Test/code/src/main/java/com/example/service/LivreService.java
