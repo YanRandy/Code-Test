@@ -9,6 +9,7 @@ import com.example.service.LivreService;
 
 import randy.framework.annotation.Controller;
 import randy.framework.annotation.UrlMapping;
+import randy.framework.annotation.RestApi;
 import randy.framework.model.ModelAndView;
 
 @Controller
@@ -24,19 +25,19 @@ public class TestController {
     // return mv;
     // }
 
-    @UrlMapping(value = "/test", method = "POST")
+    @UrlMapping(value = "/test1", method = "POST")
     public String soumettreFormulaire() {
         System.out.println(" -> [CONTROLLER] Exécution de la méthode POST pour /test");
         return "/test POST";
     }
 
-    @UrlMapping(value = "/test", method = "GET")
+    @UrlMapping(value = "/test1", method = "GET")
     public ModelAndView afficherMessages(ApplicationContext ctx) {
         LivreService service = ctx.getBean(LivreService.class);
         List<Livre> livres = service.getTousLesLivres();
 
         ModelAndView mv = new ModelAndView();
-        mv.setView("test");
+        mv.setView("test1");
         mv.setAttribute("livres", livres.toArray());
         return mv;
     }
@@ -44,5 +45,21 @@ public class TestController {
     @UrlMapping(value = "/accueil", method = "GET")
     public String accueil() {
         return "accueil"; // → cherche /WEB-INF/views/accueil.jsp (ou .html)
+    }
+
+    @UrlMapping(value = "/livres", method = "GET")
+    public ModelAndView afficherLivres(ApplicationContext ctx) {
+        LivreService service = ctx.getBean(LivreService.class);
+        ModelAndView mv = new ModelAndView();
+        mv.setView("test");
+        mv.setAttribute("livres", service.getTousLesLivres().toArray());
+        return mv;
+    }
+
+    @RestApi
+    @UrlMapping(value = "/api/livres", method = "GET")
+    public Object getLivres(ApplicationContext ctx) {
+        LivreService service = ctx.getBean(LivreService.class);
+        return service.getTousLesLivres();
     }
 }
