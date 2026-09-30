@@ -62,4 +62,10 @@ public class TestController {
         LivreService service = ctx.getBean(LivreService.class);
         return service.getTousLesLivres();
     }
+
+    @RestApi
+    @UrlMapping (value = "/api/popo", method = "GET")
+    public String Popo() {
+        return "Popo est la";
+    }
 }
