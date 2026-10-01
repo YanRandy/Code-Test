@@ -1,11 +1,14 @@
 package com.example.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.context.ApplicationContext;
 
 import com.example.entity.Livre;
+import com.example.entity.Personne;
 import com.example.service.LivreService;
+import com.example.service.PersonneService;
 
 import randy.framework.annotation.Controller;
 import randy.framework.annotation.UrlMapping;
@@ -68,4 +71,48 @@ public class TestController {
     public String Popo() {
         return "Popo est la";
     }
+
+    @UrlMapping(value = "/formulaire", method = "GET")
+    public ModelAndView afficherFormulaire() {
+        ModelAndView mv = new ModelAndView();
+        mv.setView("formulaire");
+        return mv;
+    }
+
+    @UrlMapping(value = "/personnes", method = "GET")
+    public ModelAndView afficherPersonne(ApplicationContext ctx) {
+        PersonneService service = ctx.getBean(PersonneService.class);
+        ModelAndView mv = new ModelAndView();
+        mv.setView("personnes");
+        mv.setAttribute("personnes", service.getToutesLesPersonnes().toArray());
+        return mv;
+    }
+
+    @RestApi
+    @UrlMapping(value = "/api/personnes", method = "GET")
+    public List<Personne> getPersonnesApi(ApplicationContext ctx) {
+        PersonneService service = ctx.getBean(PersonneService.class);
+        return service.getToutesLesPersonnes();
+    }
+
+    // Insert + return JSON confirmation
+    // curl -X POST "http://localhost:8080/code-test/api/save" \
+    //  -d "nom=Dupont&prenom=Jean&age=30"
+
+    @RestApi
+    @UrlMapping(value = "/api/save", method = "POST")
+    public Object saveApi(String nom, String prenom, int age, ApplicationContext ctx) {
+        PersonneService service = ctx.getBean(PersonneService.class);
+        service.save(nom, prenom, age);   // ← insert still happens
+        return Map.of("status", "ok", "nom", nom);  // ← but response is JSON not a view
+    }
+
+    // Insert + redirect to JSP view
+    @UrlMapping(value = "/save", method = "POST")
+    public String save(String nom, String prenom, int age, ApplicationContext ctx) {
+        PersonneService service = ctx.getBean(PersonneService.class);
+        service.save(nom, prenom, age);   // ← same insert
+        return "confirmation";            // ← but response is a JSP page
+    }
+
 }
