@@ -22,4 +22,8 @@ public class PersonneService {
     public void save(String nom, String prenom, int age) {
         repo.save(nom, prenom, age);
     }
+
+    public void save(Personne personne) {
+        repo.save(personne);
+    }
 }

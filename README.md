@@ -97,6 +97,12 @@ The method parameter `ApplicationContext ctx` is the signal to the framework to 
 
 ---
 
+## To check the API in `TestController` which is in `POST`
+```bash
+curl -X POST "http://localhost:8080/code-test/api/save" \
+-d "nom=Dupont&prenom=Jean&age=30"
+```
+
 ## Build and deploy
 
 ```bash

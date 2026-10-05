@@ -96,9 +96,6 @@ public class TestController {
     }
 
     // Insert + return JSON confirmation
-    // curl -X POST "http://localhost:8080/code-test/api/save" \
-    //  -d "nom=Dupont&prenom=Jean&age=30"
-
     @RestApi
     @UrlMapping(value = "/api/save", method = "POST")
     public Object saveApi(String nom, String prenom, int age, ApplicationContext ctx) {
@@ -113,6 +110,12 @@ public class TestController {
         PersonneService service = ctx.getBean(PersonneService.class);
         service.save(nom, prenom, age);   // ← same insert
         return "confirmation";            // ← but response is a JSP page
+    }
+
+    @UrlMapping(value = "/cpm/save", method = "POST")
+    public String save(Personne personne, ApplicationContext ctx) {
+        ctx.getBean(PersonneService.class).save(personne);
+        return "confirmation";
     }
 
 }

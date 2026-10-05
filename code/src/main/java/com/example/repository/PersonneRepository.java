@@ -35,4 +35,10 @@ public class PersonneRepository {
                 "INSERT INTO Personne (nom, prenom, age) VALUES (?, ?, ?)",
                 nom, prenom, age);
     }
+
+    public void save(Personne personne) {
+        jdbc.update(
+                "INSERT INTO Personne (nom, prenom, age) VALUES (?, ?, ?)",
+                personne.getNom(), personne.getPrenom(), personne.getAge());
+    }
 }
