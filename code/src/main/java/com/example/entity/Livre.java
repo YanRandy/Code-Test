@@ -5,6 +5,16 @@ public class Livre {
     private String titre;
     private String auteur;
 
+    public Livre() {
+
+    }
+
+    public Livre(int id, String titre, String auteur) {
+        this.id = id;
+        this.titre = titre;
+        this.auteur = auteur;
+    }
+
     public int getId() {
         return id;
     }
